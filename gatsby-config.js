@@ -3,10 +3,12 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `MyPortfoloi`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Omar Anas`,
+    siteUrl: `https://www.Omar-Anas.tld`
   },
-  plugins: ["gatsby-plugin-image", {
+  plugins: [
+    "gatsby-plugin-image", 
+    {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"
