@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import {Loader}  from '@components';
+import {Loader,Nav}  from '@components';
 import { GlobalStyle, theme } from '@styles';
-
 
 const StyledContent = styled.div`
   display: flex;
@@ -27,6 +26,7 @@ const Layout = ({ children, location }) => {
       });
     }
   };
+  
 
   useEffect(() => {
     if (isLoading) {
@@ -51,21 +51,16 @@ const Layout = ({ children, location }) => {
 
   return (
     <>
-      {/* <Head /> */}
-
       <div id="root">
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-
-          <a className="skip-to-content" href="#content">
-            Skip to Content
-          </a>
 
           {isLoading && isHome ? (
             <Loader finishLoading={() => setIsLoading(false)} />
           ) : (
             <StyledContent>
-             
+              
+              <Nav isHome={isHome} />
 
               <div id="content">
                 {children}

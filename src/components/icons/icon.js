@@ -1,52 +1,98 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import {
-  IconAppStore,
   IconBookmark,
-  IconCodepen,
   IconExternal,
   IconFolder,
   IconFork,
   IconGitHub,
-  IconInstagram,
   IconLinkedin,
   IconLoader,
-  IconLogo,
-  IconPlayStore,
-  IconStar,
   IconTwitter,
-} from '@components/icons';
+  IconGatsby,
+  IconJava,
+  IconJavascript,
+  IconJest,
+  IconMui,
+  IconNest,
+  IconNode,
+  IconReact,
+  IconSolidity,
+  IconSpring,
+  IconFun,
+  IconCode,
+  IconCss, 
+  IconDocker, 
+  IconHtml, 
+  IconMongoDB, 
+  IconPostgres, 
+  IconTailwind, 
+  IconTypeScript
+} from "@components/icons";
 
 const Icon = ({ name }) => {
   switch (name) {
-    case 'AppStore':
-      return <IconAppStore />;
-    case 'Bookmark':
+    case "Bookmark":
       return <IconBookmark />;
-    case 'Codepen':
-      return <IconCodepen />;
-    case 'External':
+    case "External":
       return <IconExternal />;
-    case 'Folder':
+    case "Folder":
       return <IconFolder />;
-    case 'Fork':
+    case "Fork":
       return <IconFork />;
-    case 'GitHub':
+    case "Code":
+      return <IconCode />;
+    case "Fun":
+      return <IconFun />;
+    //socials
+    case "GitHub":
       return <IconGitHub />;
-    case 'Instagram':
-      return <IconInstagram />;
-    case 'Linkedin':
+   
+    case "Linkedin":
       return <IconLinkedin />;
-    case 'Loader':
+    case "Loader":
       return <IconLoader />;
-    case 'Logo':
-      return <IconLogo />;
-    case 'PlayStore':
-      return <IconPlayStore />;
-    case 'Star':
-      return <IconStar />;
-    case 'Twitter':
+
+    case "Twitter":
       return <IconTwitter />;
+    //skills
+    case "Docker":
+      return <IconDocker />;
+    case "Gatsby":
+      return <IconGatsby />;
+    case "Java":
+      return <IconJava />;
+    case "Javascript":
+      return <IconJavascript />;
+    case "Jest":
+      return <IconJest />;
+    case "MUI":
+      return <IconMui />;
+    case "Mysql":
+      return <IconMui />;
+    case "Nest":
+      return <IconNest />;
+    case "Node":
+      return <IconNode />;
+    case "React":
+      return <IconReact />;
+    case "Solidity":
+      return <IconSolidity />;
+    case "Spring":
+      return <IconSpring />;
+    case "MongoDB":
+      return <IconMongoDB />;
+    case "Typescript":
+      return <IconTypeScript />;
+    case "HTML":
+      return <IconHtml />;
+    case "CSS":
+      return <IconCss />;
+    case "Postgress":
+      return <IconPostgres />;
+    case "Tailwind":
+      return <IconTailwind />;
+
     default:
       return <IconExternal />;
   }

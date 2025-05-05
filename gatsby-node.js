@@ -34,6 +34,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           '@utils': path.resolve(__dirname, 'src/utils'),
           '@fonts': path.resolve(__dirname, 'src/fonts'),
           '@styles': path.resolve(__dirname, 'src/styles'),
+          '@config': path.resolve(__dirname, 'src/config'),
         },
       },
     });
