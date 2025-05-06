@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Layout, Hero,About}from '@components';
+import { Layout, Hero,About,Projects,Contact }from '@components';
 // Step 2: Define your component
 
 const StyledMainContainer = styled.main`
@@ -12,6 +12,8 @@ const IndexPage = ({ location }) => (
     <StyledMainContainer className="fillHeight">
       <Hero />
       <About/>
+      {/* <Projects/> */}
+      <Contact/>
     </StyledMainContainer>
    </Layout>
 );

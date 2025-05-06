@@ -49,7 +49,7 @@ const About = () => {
       <div className="inner">
         <div>
           <p>
-            Hello! I'm Omar, a backend engineer specializing in Node.js, though
+            Hello! I'm Omar 👋, a backend engineer specializing in Node.js, though
             I love building with whatever tools are right for the job. I
             graduated with a Computer Science degree from Helwan University in
             2023. My passion for web development began during my senior year
