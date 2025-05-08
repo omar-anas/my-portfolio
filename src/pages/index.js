@@ -12,14 +12,15 @@ const IndexPage = ({ location }) => (
     <StyledMainContainer className="fillHeight">
       <Hero />
       <About/>
-      {/* <Projects/> */}
+      <Projects/>
       <Contact/>
     </StyledMainContainer>
    </Layout>
 );
 
 
-
-export const Head = () => <title>Home Page</title>
+// Step 1: Define your page metadata
+// This is optional, but recommended for SEO
+export const Head = () => <title>Omar Anas Portfolio</title>
 // Step 3: Export your component
 export default IndexPage

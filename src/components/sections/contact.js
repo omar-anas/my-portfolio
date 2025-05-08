@@ -44,10 +44,10 @@ p {
   font-family: var(--font-sans);
   font-weight: bold;
   display: inline-block; // To allow ::after pseudo-element positioning
-
+  
   &::after {
     content: '.';
-    color: #01ff70; // Bright green color
+    color: var(--green); // Bright green color
     margin-left: 0.1ch; // Small space before the dot
   }
 

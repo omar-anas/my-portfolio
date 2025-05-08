@@ -37,9 +37,7 @@ const StyledLoader = styled.div`
       stroke-width: 5;
     }
     
-    #B {
-      opacity: 0;
-    }
+    
   }
 `;
 

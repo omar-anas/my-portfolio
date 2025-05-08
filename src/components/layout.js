@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import {Loader,Nav}  from '@components';
+import {Loader,Nav , Head}  from '@components';
 import { GlobalStyle, theme } from '@styles';
 
 const StyledContent = styled.div`
@@ -51,6 +51,7 @@ const Layout = ({ children, location }) => {
 
   return (
     <>
+     
       <div id="root">
         <ThemeProvider theme={theme}>
           <GlobalStyle />

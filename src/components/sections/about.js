@@ -26,12 +26,7 @@ const StyledSkills = styled.div`
     margin: 50px auto 0;
     width: 100%;
   }
-  .wrapper {
-    ${({ theme }) => theme.mixins.boxShadow};
-    display: block;
-    position: relative;
-    width: 100%;
-  }
+  
 `;
 
 const About = () => {
@@ -45,7 +40,7 @@ const About = () => {
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      <h2 className="numbered-heading">About Me</h2>
+      <h2 className="after-heading">About Me</h2>
       <div className="inner">
         <div>
           <p>

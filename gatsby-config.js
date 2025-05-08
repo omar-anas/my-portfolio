@@ -11,8 +11,11 @@ const config = {
 
 module.exports = {
   siteMetadata: {
-    title: `Omar Anas`,
-    siteUrl: `https://www.Omar-Anas.tld`
+    title: `Omar Anas Portofolio`,
+    description: `Your site description`,
+    author: `Omar Anas`,
+    image: '/icon.png',
+    siteUrl: `https://omar-anas.vercel.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -22,11 +25,20 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
+
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        "icon": "src/images/icon.png"
+        name: `Omar Anas`,
+        short_name: `OS`,
+        start_url: `/`,
+           
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
       }
+
     },
     {
       resolve: `gatsby-transformer-remark`,

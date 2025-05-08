@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(10, 25, 47, 0.85);
+  background-color: var(--forest);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -38,7 +38,7 @@ const StyledHeader = styled.header`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
         background-color: rgba(10, 25, 47, 0.85);
-        box-shadow: 0 10px 30px -10px var(--navy-shadow);
+        box-shadow: 0 10px 30px -10px var(--forest);
       `};
 
     ${props =>
@@ -47,7 +47,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(calc(var(--nav-scroll-height) * -1));
-        box-shadow: 0 10px 30px -10px var(--navy-shadow);
+        box-shadow: 0 10px 30px -10px var(--forest);
       `};
   }
 `;
@@ -137,8 +137,6 @@ const Nav = ({ isHome }) => {
   const fadeClass = isHome ? 'fade' : '';
   const fadeDownClass = isHome ? 'fadedown' : '';
 
-  console.log("social",Social);
-  
   const Socials = (
     <div className="socials" tabIndex="-1">
       <Social/>
@@ -146,7 +144,7 @@ const Nav = ({ isHome }) => {
   );
 
   const ResumeLink = (
-    <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+    <a className="resume-button" href="https://drive.google.com/file/d/1L5XQ8HXq_Wbpbft53GEpLEZFEkGbdmb9/view?usp=sharing" target="_blank" rel="noopener noreferrer">
       Resume
     </a>
   );

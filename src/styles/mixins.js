@@ -9,17 +9,40 @@ const button = css`
   font-family: var(--font-mono);
   line-height: 1;
   text-decoration: none;
+  cursor: pointer;
+  position: relative;
   padding: 1.25rem 1.75rem;
-  transition: var(--transition);
+  isolation: isolate;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
 
-  &:hover,
-  &:focus-visible {
-    outline: none;
-    box-shadow: 4px 4px 0 0 var(--green);
-    transform: translate(-5px, -5px);
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--green);
+    transform: scale(0);
+    transform-origin: top left;
+    opacity: 0.1;
+    transition: transform 0.3s ease;
+    z-index: -1;
   }
-  &:after {
-    display: none !important;
+
+  &:hover {
+    color: var(--green);
+    &:before {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
   }
 `;
 
@@ -96,16 +119,39 @@ const mixins = {
     font-family: var(--font-mono);
     line-height: 1;
     text-decoration: none;
-    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
 
-    &:hover,
-    &:focus-visible {
-      outline: none;
-      box-shadow: 3px 3px 0 0 var(--green);
-      transform: translate(-4px, -4px);
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--green);
+      transform: scale(0);
+      transform-origin: top left;
+      opacity: 0.1;
+      transition: transform 0.3s ease;
+      z-index: -1;
     }
-    &:after {
-      display: none !important;
+
+    &:hover {
+      color: var(--green);
+      &:before {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
     }
   `,
 
@@ -119,16 +165,39 @@ const mixins = {
     font-family: var(--font-mono);
     line-height: 1;
     text-decoration: none;
-    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
 
-    &:hover,
-    &:focus-visible {
-      outline: none;
-      box-shadow: 4px 4px 0 0 var(--green);
-      transform: translate(-5px, -5px);
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--green);
+      transform: scale(0);
+      transform-origin: top left;
+      opacity: 0.1;
+      transition: transform 0.3s ease;
+      z-index: -1;
     }
-    &:after {
-      display: none !important;
+
+    &:hover {
+      color: var(--green);
+      &:before {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
     }
   `,
 
