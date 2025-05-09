@@ -12,13 +12,12 @@ const StyledProjectsSection = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1600px; // Increased from 1200px
+  max-width: 1600px;
   margin: 0 auto 100px;
-  padding: 0 150px; // Added horizontal padding
+  padding: 0 150px;
 
   h2 {
     font-size: clamp(26px, 5vw, 32px);
-    
     text-align: center;
   }
 
@@ -26,7 +25,7 @@ const StyledProjectsSection = styled.section`
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 40px; // Increased gap
+    grid-gap: 40px;
     position: relative;
     width: 100%;
     margin: 70px 0;
@@ -44,6 +43,7 @@ const StyledProjectsSection = styled.section`
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
       padding: 0;
+      grid-gap: 50px; /* Increased gap between cards on mobile */
     }
   }
 
@@ -61,7 +61,9 @@ const StyledProjectsSection = styled.section`
 
   .more-button {
     ${({ theme }) => theme.mixins.button};
-    margin-bottom: 100px;
+    margin: 40px 0 80px; /* Adjusted margins */
+    padding: 12px 30px; /* Larger button */
+    font-size: 16px; /* Larger text */
   }
 `;
 
@@ -70,109 +72,163 @@ const StyledProject = styled.li`
   cursor: pointer;
   border-radius: 15px;
   background: var(--light-navy);
-  transition: all 0.3s ease-in-out; // Added smoother transition
-  height: auto; // Changed from fixed 600px to auto
-  min-height: 500px; // Added minimum height
+  transition: all 0.3s ease-in-out;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 10px 30px -15px var(--navy-shadow);
 
   .project-image {
     width: 100%;
-    height: 300px; // Increased image height
-    object-fit: cover;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    
+    .gatsby-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+      object-fit: cover;
+    }
   }
 
   .project-inner {
-    padding: 30px;
-    height: calc(100% - 300px); // 300px is image height
+    padding: 25px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     position: relative;
-
-    header {
-      flex: 1;
-      margin-bottom: 20px;
+    
+    /* Add min-height to ensure consistent spacing */
+    min-height: 280px;
+    
+    @media (max-width: 768px) {
+      padding: 20px;
+      min-height: 240px;
     }
-
-    footer {
-      position: absolute;
-      bottom: 30px;
-      left: 30px;
-      right: 30px;
-
-      .project-tech-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-
-        li {
-          font-family: var(--font-mono);
-          font-size: 14px;
-          color: var(--green);
-          background-color: var(--lightest-navy);
-          padding: 8px 16px;
-          border-radius: 50px;
-
-          &::before {
-            content: ".";
-            color: var(--green); // Bright green color
-            margin-left: 0.1ch; // Small space before the dot
-          }
-        }
-      }
-    }
-  }
-
-  .project-description {
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--light-slate);
-    margin-bottom: 60px; // Add space for tech list at bottom
   }
 
   .project-top {
     display: flex;
-    justify-content: flex-end; // Moved links to right side
-    margin-bottom: 20px;
+    justify-content: flex-end;
+    margin-bottom: 15px;
 
     .project-links {
       display: flex;
-      gap: 15px;
+      gap: 12px;
+      z-index: 1;
 
       a {
-        padding: 10px;
+        padding: 8px;
+        border-radius: 50%;
+        background-color: var(--lightest-navy);
+        color: var(--lightest-slate);
+        transition: all 0.2s ease-in-out;
+        
+        &:hover {
+          background-color: var(--green-tint);
+          color: var(--green);
+          transform: translateY(-3px);
+        }
+
         svg {
-          width: 25px;
-          height: 25px;
+          width: 22px;
+          height: 22px;
         }
       }
     }
   }
 
   .project-title {
-    font-size: 34px; // Larger title
+    font-size: clamp(24px, 5vw, 30px); /* Responsive font size */
     font-weight: 600;
     color: var(--lightest-slate);
     margin-bottom: 15px;
+    line-height: 1.2;
 
     a {
       color: inherit;
       text-decoration: none;
+      
+      &:hover {
+        color: var(--green);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .project-description {
+    font-size: clamp(16px, 4vw, 18px); /* Responsive font size */
+    line-height: 1.6;
+    color: var(--light-slate);
+    margin-bottom: 25px;
+    flex-grow: 1;
+    
+    /* Ensure text doesn't overflow on small screens */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    
+    p {
+      margin-bottom: 15px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .project-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 15px 0 0 0;
+    list-style: none;
+
+    li {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--green);
+      background-color: var(--lightest-navy);
+      padding: 6px 12px;
+      border-radius: 50px;
+      white-space: nowrap;
+      
+      @media (max-width: 768px) {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+
+      &::before {
+        content: "•";
+        color: var(--green);
+        margin-right: 6px;
+      }
     }
   }
 
   &:hover {
-    transform: translateY(-10px); // Reduced movement for smoother effect
-    box-shadow: 0 20px 30px -15px var(--green);
-
-    .project-image {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 30px -15px var(--navy-shadow);
+    
+    .gatsby-image {
       filter: brightness(1.1);
-      transform: scale(1.02);
-      transition: all 0.3s ease-in-out;
+      transform: scale(1.03);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    &:hover {
+      transform: translateY(-5px);
     }
   }
 `;
@@ -232,7 +288,9 @@ const Projects = () => {
 
     return (
       <>
-        <GatsbyImage image={image} alt={title} className="project-image" />
+        <div className="project-image">
+          <GatsbyImage image={image} alt={title} className="gatsby-image" />
+        </div>
         <div className="project-inner">
           <header>
             <div className="project-top">
@@ -273,15 +331,13 @@ const Projects = () => {
             />
           </header>
 
-          <footer>
-            {tech && (
-              <ul className="project-tech-list">
-                {tech.map((tech, i) => (
-                  <li key={i}>{tech}</li>
-                ))}
-              </ul>
-            )}
-          </footer>
+          {tech && (
+            <ul className="project-tech-list">
+              {tech.map((tech, i) => (
+                <li key={i}>{tech}</li>
+              ))}
+            </ul>
+          )}
         </div>
       </>
     );

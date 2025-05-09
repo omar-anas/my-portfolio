@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
@@ -19,7 +19,7 @@ const StyledLoader = styled.div`
   
   .logo-wrapper {
     width: max-content;
-    max-width: 600px; /* Increased from 100px to show more of the SVG */
+    max-width: 600px;
     transition: var(--transition);
     opacity: 1;
     
@@ -30,18 +30,25 @@ const StyledLoader = styled.div`
       margin: 0 auto;
       fill: none;
       user-select: none;
+      
+      .my-path {
+        fill: none;
+        stroke-width: 5;
+        /* We no longer need these here as they're defined in the SVG */
+      }
     }
-    
-    .my-path {
-      fill: none;
-      stroke-width: 5;
-    }
-    
-    
   }
 `;
 
 const Loader = ({ finishLoading }) => {
+  useEffect(() => {
+    // Use requestAnimationFrame to ensure browser has painted before animation
+    const raf = requestAnimationFrame(() => {
+      animate();
+    });
+    
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const animate = () => {
     const loader = anime.timeline({
@@ -51,11 +58,11 @@ const Loader = ({ finishLoading }) => {
     loader
       .add({
         targets: '#logo .lines path',
-        strokeDashoffset: [anime.setDashoffset, 0],
+        strokeDashoffset: [anime.setDashoffset, 0], // This will automatically calculate and use the correct dashoffset values
         easing: 'easeInOutSine',
-        duration: 1400,
-        delay: function(el, i) { return i * 100 },
-        direction: 'alternate',
+        duration: 1000,
+        delay: (el, i) => 300 + (i * 50), // Stagger the animations
+        direction: 'normal',
         loop: false
       })  
       .add({
@@ -75,12 +82,8 @@ const Loader = ({ finishLoading }) => {
       });
   };
 
-  useEffect(() => {
-    animate();
-  }, []);
-
   return (
-    <StyledLoader className="loader" >
+    <StyledLoader className="loader">
       <Helmet bodyAttributes={{ class: `hidden` }} />
 
       <div className="logo-wrapper">
